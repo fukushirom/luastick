@@ -81,5 +81,5 @@ class X
 ```
 The manual describes summary of functions and Lua example codes.
 
-For details, see [luastick/manual.md](https://github.com/hukushirom/luastick/blob/master/manual.md).  
-You can download Windows executable from [this page](https://github.com/hukushirom/luastick/releases).
+For details, see [luastick/manual.md](https://github.com/fukushirom/luastick/blob/master/manual.md).  
+You can download Windows executable from [this page](https://github.com/fukushirom/luastick/releases).

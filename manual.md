@@ -32,7 +32,7 @@ Followings are directories in the Examples_X_X.
 - Alpha software.  
 - Using MFC.  
 
-<img src="https://github.com/hukushirom/luastick/blob/master/Examples_5_3/Sticktrace/image01.png">
+<img src="https://github.com/fukushirom/luastick/blob/master/Examples_5_3/Sticktrace/image01.png">
 
 **StickTest**
 - A program example which provides Lua debug functions using Sticktrace library.  
@@ -1605,7 +1605,7 @@ They are defined using \<stickconv ...\> tag in 'Sticklib.h'.
 
 ### How to debug  
 
-<img src="https://github.com/hukushirom/luastick/blob/master/Examples_5_3/Sticktrace/image01.png">
+<img src="https://github.com/fukushirom/luastick/blob/master/Examples_5_3/Sticktrace/image01.png">
 
 1. Start StickTest.exe.
 

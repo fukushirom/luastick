@@ -30,7 +30,7 @@
 - アルファ版。  
 - MFCを使用。  
 
-<img src="https://github.com/hukushirom/luastick/blob/master/Examples_5_3/Sticktrace/image01.png">
+<img src="https://github.com/fukushirom/luastick/blob/master/Examples_5_3/Sticktrace/image01.png">
 
 **StickTest**
 - Sticktraceを使用したサンプルプログラム。  
@@ -1595,7 +1595,7 @@ Luaオブジェクト。
 
 ### デバッグ方法  
 
-<img src="https://github.com/hukushirom/luastick/blob/master/Examples_5_3/Sticktrace/image01.png">
+<img src="https://github.com/fukushirom/luastick/blob/master/Examples_5_3/Sticktrace/image01.png">
 
 1. StickTest.exe を起動。  
 
