@@ -162,8 +162,16 @@ private:
 		std::string tmpName(xml, xmlTmp);
 
 		const auto & validTags = VALID_TAG_SET();
+//----- 25.10.27 Fukushiro M. 変更前 ()-----
+//		if (validTags.find(tmpName) == validTags.end())
+//			return false;
+//----- 25.10.27 Fukushiro M. 変更後 ()-----
 		if (validTags.find(tmpName) == validTags.end())
+		{
+			xmlNext = xmlTmp;
 			return false;
+		}
+//----- 25.10.27 Fukushiro M. 変更終 ()-----
 
 		type = isStartTag ? TagShot::Type::BEGIN : TagShot::Type::END;
 		name = tmpName;
@@ -256,6 +264,8 @@ public:
 			TagShot::Type type;
 			std::string name;
 			if (IsMatchTag(type, name, xmlNext, xml)) break;
+// 25.10.27 Fukushiro M. 1行追加 ()
+			xml = xmlNext;
 		}
 		TagShot tagShot;
 		if (!ParseShot(tagShot, xml, false, false))
