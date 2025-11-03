@@ -435,6 +435,11 @@ static const std::regex FUNC_EXT_XML(R"(^extern\s+([a-zA-Z_][\w:<,>\*\& ]*)\s+([
 // [static inline TT:TT<T,T> *& FFF (PPP)]のTT:TT<T,T> *&,FFF,PPP)を抽出 "^static\s+inline\s+([a-zA-Z_][\w:<,>\*\& ]*)\s+([a-zA-Z_]\w*)\s*\(([^\)]+)\)"
 static const std::regex FUNC_STC_INL_XML(R"(^static\s+inline\s+([a-zA-Z_][\w:<,>\*\& ]*)\s+([a-zA-Z_]\w*)\s*\((.+)$)");
 
+//----- 25.11.03 Fukushiro M. 追加始 ()-----
+// [inline static TT:TT<T,T> *& FFF (PPP)]のTT:TT<T,T> *&,FFF,PPP)を抽出 "^static\s+inline\s+([a-zA-Z_][\w:<,>\*\& ]*)\s+([a-zA-Z_]\w*)\s*\(([^\)]+)\)"
+static const std::regex FUNC_INL_STC_XML(R"(^inline\s+static\s+([a-zA-Z_][\w:<,>\*\& ]*)\s+([a-zA-Z_]\w*)\s*\((.+)$)");
+//----- 25.11.03 Fukushiro M. 追加終 ()-----
+
 // [static TT:TT<T,T> *& FFF (PPP)]のTT:TT<T,T> *&,FFF,PPP)を抽出 "^static\s+([a-zA-Z_][\w:<,>\*\& ]*)\s+([a-zA-Z_]\w*)\s*\(([^\)]+)\)"
 static const std::regex FUNC_STC_XML(R"(^static\s+([a-zA-Z_][\w:<,>\*\& ]*)\s+([a-zA-Z_]\w*)\s*\((.+)$)");
 
@@ -3451,6 +3456,10 @@ static bool ParseFuncDef(
 		funcStrType = "extern";
 	else if (std::regex_search(text, results, FUNC_STC_INL_XML))	// [static inline TT:TT<T,T> *& FFF (PPP)]のTT:TT<T,T> *&,FFF,PPP)を抽出
 		funcStrType = "static";
+//----- 25.11.03 Fukushiro M. 追加始 ()-----
+	else if (std::regex_search(text, results, FUNC_INL_STC_XML))	// [inline static TT:TT<T,T> *& FFF (PPP)]のTT:TT<T,T> *&,FFF,PPP)を抽出
+		funcStrType = "static";
+//----- 25.11.03 Fukushiro M. 追加終 ()-----
 	else if (std::regex_search(text, results, FUNC_STC_XML))	// [static TT:TT<T,T> *& FFF (PPP)]のTT:TT<T,T> *&,FFF,PPPを抽出
 		funcStrType = "static";
 	else if (std::regex_search(text, results, FUNC_VIR_XML))	// [virtual TT:TT<T,T> *& FFF (PPP)]のTT:TT<T,T> *&,FFF,PPPを抽出
