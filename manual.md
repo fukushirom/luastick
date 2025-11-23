@@ -464,7 +464,7 @@ It declares a C\+\+ type and two functions:one function is to pull the decalred 
 ###### Example  
 
 ```  
-<sticktype name="boolean" ctype="bool" getfunc="Sticklib::check_lvalue" setfunc="Sticklib::push_lvalue" />  
+<sticktype name="boolean" ctype="bool" getfunc="LuaStick::Lib::check_lvalue" setfunc="LuaStick::Lib::push_lvalue" />  
 ```  
 
 #### Attributes  
@@ -1088,7 +1088,7 @@ They are defined using \<sticktype ...\> tag in 'Sticklib.h'.
 |--------------------------------------------------------------------------------------------------------------------------|  
 |    lightuserdata                   lightuserdata                    void*                                                |  
 |--------------------------------------------------------------------------------------------------------------------------|  
-|    classobject                     classobject                      Sticklib::classobject (void*)                        |  
+|    classobject                     classobject                      LuaStick::Lib::classobject (void*)                        |  
 |--------------------------------------------------------------------------------------------------------------------------|  
 |    array<number>                   array<number> (=table)           std::vector<double>                                  |  
 |--------------------------------------------------------------------------------------------------------------------------|  
@@ -1132,7 +1132,7 @@ They are defined using \<sticktype ...\> tag in 'Sticklib.h'.
 |--------------------------------------------------------------------------------------------------------------------------|  
 |    hash<string,string>             table<string,string>             std::unordered_map<std::string,std::string>          |  
 |--------------------------------------------------------------------------------------------------------------------------|  
-|    hash<string,any>                table<string,any>                std::unordered_map<std::string,Sticklib::AnyValue>   |  
+|    hash<string,any>                table<string,any>                std::unordered_map<std::string,LuaStick::Lib::AnyValue>   |  
 +--------------------------------------------------------------------------------------------------------------------------+  
 ```  
 

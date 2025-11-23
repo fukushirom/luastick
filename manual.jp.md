@@ -461,7 +461,7 @@ Luaのスタックから値を出力し、値を入力できる型を定義す�
 ###### 例  
 
 ```  
-<sticktype name="boolean" ctype="bool" getfunc="Sticklib::check_lvalue" setfunc="Sticklib::push_lvalue" />  
+<sticktype name="boolean" ctype="bool" getfunc="LuaStick::Lib::check_lvalue" setfunc="LuaStick::Lib::push_lvalue" />  
 ```  
 
 #### 属性  
@@ -1079,7 +1079,7 @@ Luaオブジェクト。
 |--------------------------------------------------------------------------------------------------------------------------|  
 |    lightuserdata                   lightuserdata                    void*                                                |  
 |--------------------------------------------------------------------------------------------------------------------------|  
-|    classobject                     classobject                      Sticklib::classobject (void*)                        |  
+|    classobject                     classobject                      LuaStick::Lib::classobject (void*)                        |  
 |--------------------------------------------------------------------------------------------------------------------------|  
 |    array<number>                   array<number> (=table)           std::vector<double>                                  |  
 |--------------------------------------------------------------------------------------------------------------------------|  
@@ -1123,7 +1123,7 @@ Luaオブジェクト。
 |--------------------------------------------------------------------------------------------------------------------------|  
 |    hash<string,string>             table<string,string>             std::unordered_map<std::string,std::string>          |  
 |--------------------------------------------------------------------------------------------------------------------------|  
-|    hash<string,any>                table<string,any>                std::unordered_map<std::string,Sticklib::AnyValue>   |  
+|    hash<string,any>                table<string,any>                std::unordered_map<std::string,LuaStick::Lib::AnyValue>   |  
 +--------------------------------------------------------------------------------------------------------------------------+  
 ```  
 
