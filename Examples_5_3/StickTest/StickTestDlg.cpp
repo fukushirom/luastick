@@ -228,11 +228,11 @@ void RawFunc(lua_State * L)
 {
 	// Generated at "c:\src\lua\luastick\luastick\src\luastick.cpp"(4361)
 	std::string param1;
-	Sticklib::check_lvalue<std::string>(param1, L, 1);
+	LuaStick::Lib::check_lvalue<std::string>(param1, L, 1);
 	param1 += "-OK";
-	Sticklib::push_lvalue<std::string>(L, param1, false);
+	LuaStick::Lib::push_lvalue<std::string>(L, param1, false);
 	param1 += "-OK";
-	Sticklib::push_lvalue<std::string>(L, param1, false);
+	LuaStick::Lib::push_lvalue<std::string>(L, param1, false);
 }
 
 CStickTestDlg* ToStickTestDlg(void* data)
@@ -536,7 +536,7 @@ LRESULT CStickTestDlg::OnUserCommand(WPARAM, LPARAM)
 	case SticktraceDef::DebuggerCommand::ON_DEBUG_OUTPUT:
 	{
 		std::wstring wstrText;
-		Sticklib::T_to_U<std::wstring, std::string>(wstrText, strParam1);
+		LuaStick::Lib::T_to_U<std::wstring, std::string>(wstrText, strParam1);
 		ShowMessage(wstrText.c_str());
 		break;
 	}
@@ -601,9 +601,9 @@ int NM1::NM1_NM1::MyFunc2(std::string & v1)
 // 		luaL_error(L, "incorrect argument");
 // 
 // 	double v1;
-// 	Sticklib::lnumber_to_floatX<double>(v1, luaL_checknumber(L, 2));
+// 	LuaStick::Lib::lnumber_to_floatX<double>(v1, luaL_checknumber(L, 2));
 // 	__int64 v2;
-// 	Sticklib::linteger_to_intX<__int64>(v2, luaL_checkinteger(L, 3));
+// 	LuaStick::Lib::linteger_to_intX<__int64>(v2, luaL_checkinteger(L, 3));
 // 	int __lstickvar_ret;
 // 	try
 // 	{
@@ -614,11 +614,11 @@ int NM1::NM1_NM1::MyFunc2(std::string & v1)
 // 		std::string __lstickvar_message = "C function error:MyFunc2:";
 // 		luaL_error(L, __lstickvar_message.c_str());
 // 	}
-// 	Sticklib::l_number __lstickvar_r1;
-// 	Sticklib::floatX_to_lnumber<double>(__lstickvar_r1, v1);
+// 	LuaStick::Lib::l_number __lstickvar_r1;
+// 	LuaStick::Lib::floatX_to_lnumber<double>(__lstickvar_r1, v1);
 // 	lua_pushnumber(L, __lstickvar_r1);
-// 	Sticklib::l_integer __lstickvar_r2;
-// 	Sticklib::intX_to_linteger<int>(__lstickvar_r2, __lstickvar_ret);
+// 	LuaStick::Lib::l_integer __lstickvar_r2;
+// 	LuaStick::Lib::intX_to_linteger<int>(__lstickvar_r2, __lstickvar_ret);
 // 	lua_pushinteger(L, __lstickvar_r2);
 // 	return 2;
 // }
@@ -653,9 +653,9 @@ int NM1::NM1_NM3::MyFunc3(double & v1)
 // 	if (!p) { return 0; }
 // 
 // 	double v1;
-// 	Sticklib::lnumber_to_floatX<double>(v1, luaL_checknumber(L, 2));
+// 	LuaStick::Lib::lnumber_to_floatX<double>(v1, luaL_checknumber(L, 2));
 // 	__int64 v2;
-// 	Sticklib::linteger_to_intX<__int64>(v2, luaL_checkinteger(L, 3));
+// 	LuaStick::Lib::linteger_to_intX<__int64>(v2, luaL_checkinteger(L, 3));
 // 	int __lstickvar_ret;
 // 	try
 // 	{
@@ -666,11 +666,11 @@ int NM1::NM1_NM3::MyFunc3(double & v1)
 // 		std::string __lstickvar_message = "C function error:MyFunc2:";
 // 		luaL_error(L, __lstickvar_message.c_str());
 // 	}
-// 	Sticklib::l_number __lstickvar_r1;
-// 	Sticklib::floatX_to_lnumber<double>(__lstickvar_r1, v1);
+// 	LuaStick::Lib::l_number __lstickvar_r1;
+// 	LuaStick::Lib::floatX_to_lnumber<double>(__lstickvar_r1, v1);
 // 	lua_pushnumber(L, __lstickvar_r1);
-// 	Sticklib::l_integer __lstickvar_r2;
-// 	Sticklib::intX_to_linteger<int>(__lstickvar_r2, __lstickvar_ret);
+// 	LuaStick::Lib::l_integer __lstickvar_r2;
+// 	LuaStick::Lib::intX_to_linteger<int>(__lstickvar_r2, __lstickvar_ret);
 // 	lua_pushinteger(L, __lstickvar_r2);
 // 	return 2;
 // }

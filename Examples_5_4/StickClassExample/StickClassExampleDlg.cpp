@@ -170,7 +170,7 @@ void CStickClassExampleDlg::OnBnClickedBtnLoad1()
 	else
 	{
 		std::wstring wstr_error;
-		Sticklib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
+		LuaStick::Lib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
 		Output(wstr_error.c_str());
 	}
 }
@@ -186,7 +186,7 @@ void CStickClassExampleDlg::OnBnClickedBtnLoad2()
 	else
 	{
 		std::wstring wstr_error;
-		Sticklib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
+		LuaStick::Lib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
 		Output(wstr_error.c_str());
 	}
 }
@@ -208,7 +208,7 @@ void CStickClassExampleDlg::OnBnClickedBtnFunc1()
 	if (!m_stickrun.CallFunction(&error_message, "SNDBX.Func1"))
 	{
 		std::wstring wstr_error;
-		Sticklib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
+		LuaStick::Lib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
 		Output(wstr_error.c_str());
 	}
 }
@@ -221,7 +221,7 @@ void CStickClassExampleDlg::OnBnClickedBtnFunc2()
 	if (!m_stickrun.CallFunction(&error_message, "SNDBX.Func2"))
 	{
 		std::wstring wstr_error;
-		Sticklib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
+		LuaStick::Lib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
 		Output(wstr_error.c_str());
 	}
 }
@@ -234,7 +234,7 @@ void CStickClassExampleDlg::OnBnClickedBtnFunc3()
 	if (!m_stickrun.CallFunction(&error_message, "SNDBX.Func3"))
 	{
 		std::wstring wstr_error;
-		Sticklib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
+		LuaStick::Lib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
 		Output(wstr_error.c_str());
 	}
 }
@@ -247,7 +247,7 @@ void CStickClassExampleDlg::OnBnClickedBtnFunc4()
 	if (!m_stickrun.CallFunction(&error_message, "SNDBX.Func4"))
 	{
 		std::wstring wstr_error;
-		Sticklib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
+		LuaStick::Lib::T_to_U<std::wstring, std::string>(wstr_error, error_message);
 		Output(wstr_error.c_str());
 	}
 }

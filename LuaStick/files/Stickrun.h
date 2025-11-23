@@ -1165,40 +1165,40 @@ protected:
 					switch (ref.type)
 					{
 					case Stickrun::Out::Type::DBL_ARRAY:
-						Sticklib::check_array<double>(*(std::vector<double> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_array<double>(*(std::vector<double> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::I64_ARRAY:
-						Sticklib::check_array<__int64>(*(std::vector<__int64> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_array<__int64>(*(std::vector<__int64> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::STR_ARRAY:
-						Sticklib::check_array<std::string>(*(std::vector<std::string> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_array<std::string>(*(std::vector<std::string> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::DBL_DBL_HASH:
-						Sticklib::check_hash<double, double>(*(std::unordered_map<double, double> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_hash<double, double>(*(std::unordered_map<double, double> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::DBL_I64_HASH:
-						Sticklib::check_hash<double, __int64>(*(std::unordered_map<double, __int64> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_hash<double, __int64>(*(std::unordered_map<double, __int64> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::DBL_STR_HASH:
-						Sticklib::check_hash<double, std::string>(*(std::unordered_map<double, std::string> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_hash<double, std::string>(*(std::unordered_map<double, std::string> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::I64_DBL_HASH:
-						Sticklib::check_hash<__int64, double>(*(std::unordered_map<__int64, double> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_hash<__int64, double>(*(std::unordered_map<__int64, double> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::I64_I64_HASH:
-						Sticklib::check_hash<__int64, __int64>(*(std::unordered_map<__int64, __int64> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_hash<__int64, __int64>(*(std::unordered_map<__int64, __int64> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::I64_STR_HASH:
-						Sticklib::check_hash<__int64, std::string>(*(std::unordered_map<__int64, std::string> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_hash<__int64, std::string>(*(std::unordered_map<__int64, std::string> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::STR_DBL_HASH:
-						Sticklib::check_hash<std::string, double>(*(std::unordered_map<std::string, double> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_hash<std::string, double>(*(std::unordered_map<std::string, double> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::STR_I64_HASH:
-						Sticklib::check_hash<std::string, __int64>(*(std::unordered_map<std::string, __int64> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_hash<std::string, __int64>(*(std::unordered_map<std::string, __int64> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					case Stickrun::Out::Type::STR_STR_HASH:
-						Sticklib::check_hash<std::string, std::string>(*(std::unordered_map<std::string, std::string> *)ref.data, m_lua_state, iStackIdx);
+						LuaStick::Lib::check_hash<std::string, std::string>(*(std::unordered_map<std::string, std::string> *)ref.data, m_lua_state, iStackIdx);
 						break;
 					default:
 						StickThrowRuntimeError(

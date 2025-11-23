@@ -19,9 +19,9 @@
 // <stick export="true"/>
 // <stick export="true" lname="anotherfunction" />
 // <param name="v1" io="inout">The v1.</param>
-// <stickdef type="c-lua" luatype="l_string" ctype="std::string" luatoc="Sticklib::lstring_to_astring" ctolua="Sticklib::astring_to_lstring" />
-// <stickdef type="c-c" ctype1="Sticklib::wbuffer" ctype2="wchar_t*" c1toc2="Sticklib::wbuffer_to_wtext" />
-// <stickdef type="c-c" ctype1="Sticklib::wbuffer" ctype2="wchar_t*" c1toc2="Sticklib::wbuffer_to_wtext" c2toc1="Sticklib::wtext_to_wbuffer" />
+// <stickdef type="c-lua" luatype="l_string" ctype="std::string" luatoc="LuaStick::Lib::lstring_to_astring" ctolua="LuaStick::Lib::astring_to_lstring" />
+// <stickdef type="c-c" ctype1="LuaStick::Lib::wbuffer" ctype2="wchar_t*" c1toc2="LuaStick::Lib::wbuffer_to_wtext" />
+// <stickdef type="c-c" ctype1="LuaStick::Lib::wbuffer" ctype2="wchar_t*" c1toc2="LuaStick::Lib::wbuffer_to_wtext" c2toc1="LuaStick::Lib::wtext_to_wbuffer" />
 // <stickdef type="exception" cref="MyException*" message="WStrToAStr(e->GetMessage()).get()" delete="e->Delete()" />
 // <stickdef type="exception" cref="YourException" message="WStrToAStr(e.GetMessage()).get()" />
 // <exception cref="MyException*"></exception>
@@ -364,7 +364,7 @@ static std::string LANG;
 /// <summary>
 /// Lua-type -> information hash array.
 /// Information includes c++ type, c++ function name which get value from Lua stack and c++ function name which push value on Lua stack.
-/// e.g. "string" -> { "std::string", "Sticklib::check_lvalue", "Sticklib::push_lvalue" }
+/// e.g. "string" -> { "std::string", "LuaStick::Lib::check_lvalue", "LuaStick::Lib::push_lvalue" }
 /// </summary>
 static std::unordered_map<LuaType, LuaTypeRec> LTYPE_TO_REC;
 
@@ -3792,14 +3792,14 @@ static void OutputFuncWrapper(
 	// | 		// Generated at "c:\src\luastick\luastick\luastick.cpp"(3610)                           |
 	// | 		// Get the class object.                                                                |
 	// | 		::X::A * __lstickobj;                                                                   |
-	// | 		Sticklib::check_classobject((Sticklib::classobject &)__lstickobj, L, 1);                |
+	// | 		LuaStick::Lib::check_classobject((LuaStick::Lib::classobject &)__lstickobj, L, 1);                |
 	// | 		// Generated at "c:\src\luastick\luastick\luastick.cpp"(3763)                           |
 	// | 		// Call the c++ function.                                                               |
 	// | 		auto __lstickvar_ret = (int)__lstickobj->Get();                                         |
 	// | 		__int64 _argout_0_1;                                                                    |
-	// | 		Sticklib::T_to_U(_argout_0_1, __lstickvar_ret);                                         |
+	// | 		LuaStick::Lib::T_to_U(_argout_0_1, __lstickvar_ret);                                         |
 	// | 		// Generated at "c:\src\luastick\luastick\luastick.cpp"(3933)                           |
-	// | 		Sticklib::push_lvalue(L, _argout_0_1);                                                  |
+	// | 		LuaStick::Lib::push_lvalue(L, _argout_0_1);                                                  |
 	// | 	}                                                                                           |
 	// | 	catch (std::exception & e)                                                                  |
 	// | 	{                                                                                           |
@@ -3901,21 +3901,21 @@ static int ${wrapperFunctionName}(lua_State* L)
 	// +-------------------------------------------------------------------------------------+
 	// |                                                                          -+         |
 	// | ::ClassA* __lstickobj;                                                    | Block-1 |
-	// | Sticklib::check_classobject((Sticklib::classobject&)__lstickobj, L, 1);   |         |
+	// | LuaStick::Lib::check_classobject((LuaStick::Lib::classobject&)__lstickobj, L, 1);   |         |
 	// |                                                                          -+         |
 	// | std::vector<__int64> _argin_1_1;                                          | Block-2 |
-	// | Sticklib::check_lvalue(_argin_1_1, L, 2);                                 |         |
+	// | LuaStick::Lib::check_lvalue(_argin_1_1, L, 2);                                 |         |
 	// |                                                                          -+         |
 	// | std::vector<__int32> _argin_1_2;                                          | Block-3 |
-	// | Sticklib::vector_to_vector(_argin_1_2, _argin_1_1);                       |         |
+	// | LuaStick::Lib::vector_to_vector(_argin_1_2, _argin_1_1);                       |         |
 	// |                                                                          -+         |
 	// | std::vector<__int32>* a = &_argin_1_2;                                    | Block-4 |
 	// |                                                                          -+         |
 	// | std::string _argin_2_1;                                                   | Block-2 |
-	// | Sticklib::check_lvalue(_argin_2_1, L, 3);                                 |         |
+	// | LuaStick::Lib::check_lvalue(_argin_2_1, L, 3);                                 |         |
 	// |                                                                          -+         |
 	// | std::wstring b;                                                           | Block-3 |
-	// | Sticklib::astring_to_wstring(b, _argin_2_1);                              |         |
+	// | LuaStick::Lib::astring_to_wstring(b, _argin_2_1);                              |         |
 	// |                                                                          -+         |
 	// | double _argin_3_1;                                                        | Block-5 |
 	// | double* c = &_argin_3_1;                                                  |         |
@@ -3924,17 +3924,17 @@ static int ${wrapperFunctionName}(lua_State* L)
 	// |                                                                          -+         |
 	// | std::wstring& _argout0_1 = *__lstickvar_ret;                              |         |
 	// | std::string _argout0_2;                                                   | Block-9 |
-	// | Sticklib::wstring_to_astring(_argout0_2, _argout0_1);                     |         |
+	// | LuaStick::Lib::wstring_to_astring(_argout0_2, _argout0_1);                     |         |
 	// |                                                                          -+         |
-	// | Sticklib::push_lvalue(_argout0_2, L);                                     | Block-10|
+	// | LuaStick::Lib::push_lvalue(_argout0_2, L);                                     | Block-10|
 	// |                                                                          -+         |
 	// | std::string _argout2_1;                                                   |         |
-	// | Sticklib::wstring_to_astring(_argout2_1, b);                              | Block-9 |
+	// | LuaStick::Lib::wstring_to_astring(_argout2_1, b);                              | Block-9 |
 	// |                                                                          -+         |
-	// | Sticklib::push_lvalue(_argout2_1, L);                                     | Block-10|
+	// | LuaStick::Lib::push_lvalue(_argout2_1, L);                                     | Block-10|
 	// |                                                                          -+         |
 	// | double& _argout_3_1 = *c;                                                 |         |
-	// | Sticklib::push_lvalue(L, _argout_3_1);                                    | Block-10|
+	// | LuaStick::Lib::push_lvalue(L, _argout_3_1);                                    | Block-10|
 	// |                                                                          -+         |
 	// +-------------------------------------------------------------------------------------+
 
@@ -3950,33 +3950,33 @@ static int ${wrapperFunctionName}(lua_State* L)
 	// +---------------------------------------------------------------------------------+
 	// |                                                                      -+         |
 	// | std::vector<__int64> _argin_1_1;                                      | Block-2 |
-	// | Sticklib::check_lvalue(_argin_1_1, L, 2);                             |         |
+	// | LuaStick::Lib::check_lvalue(_argin_1_1, L, 2);                             |         |
 	// |                                                                      -+         |
 	// | std::vector<__int32> _argin_1_2;                                      | Block-3 |
-	// | Sticklib::vector_to_vector(_argin_1_2, _argin_1_1);                   |         |
+	// | LuaStick::Lib::vector_to_vector(_argin_1_2, _argin_1_1);                   |         |
 	// |                                                                      -+         |
 	// | std::vector<__int32>* a = &_argin_1_2;                                | Block-4 |
 	// |                                                                      -+         |
 	// | std::string _argin_2_1;                                               | Block-2 |
-	// | Sticklib::check_lvalue(_argin_2_1, L, 3);                             |         |
+	// | LuaStick::Lib::check_lvalue(_argin_2_1, L, 3);                             |         |
 	// |                                                                      -+         |
 	// | std::wstring b;                                                       | Block-3 |
-	// | Sticklib::astring_to_wstring(b, _argin_2_1);                          |         |
+	// | LuaStick::Lib::astring_to_wstring(b, _argin_2_1);                          |         |
 	// |                                                                      -+         |
 	// | double _argin_3_1;                                                    | Block-5 |
 	// | double* c = &_argin_3_1;                                              |         |
 	// |                                                                      -+         |
 	// | auto obj = new ::ClassA(a, b, c);                                     | Block-7 |
 	// |                                                                      -+         |
-	// | Sticklib::push_classobject(L, obj, true, "lm__X__A__");               | Block-8 |
+	// | LuaStick::Lib::push_classobject(L, obj, true, "lm__X__A__");               | Block-8 |
 	// |                                                                      -+         |
 	// | std::string _argout2_1;                                               |         |
-	// | Sticklib::wstring_to_astring(_argout2_1, b);                          | Block-9 |
+	// | LuaStick::Lib::wstring_to_astring(_argout2_1, b);                          | Block-9 |
 	// |                                                                      -+         |
-	// | Sticklib::push_lvalue(_argout2_1, L);                                 | Block-10|
+	// | LuaStick::Lib::push_lvalue(_argout2_1, L);                                 | Block-10|
 	// |                                                                      -+         |
 	// | double& _argout_3_1 = *c;                                             |         |
-	// | Sticklib::push_lvalue(L, _argout_3_1);                                | Block-10|
+	// | LuaStick::Lib::push_lvalue(L, _argout_3_1);                                | Block-10|
 	// |                                                                      -+         |
 	// +---------------------------------------------------------------------------------+
 
@@ -3985,7 +3985,7 @@ static int ${wrapperFunctionName}(lua_State* L)
 	{
 		// Output above Block-1.
 
-		// Func name is "Sticklib::check_lvalue"
+		// Func name is "LuaStick::Lib::check_lvalue"
 		const auto luaValueGetFuncName = LuaTypeToGetFuncName(CtypeToLuaType(currentClassRec.GetFullpathCname() + "*"));
 
 
@@ -3993,7 +3993,7 @@ static int ${wrapperFunctionName}(lua_State* L)
 		// ------------------------------------------------------
 		// // Generated at "c:\src\luastick\luastick\luastick.cpp"(2222)
 		// // Get the class object.
-		// ::CStickTestDlg * __lstickobj = (::CStickTestDlg *)Sticklib::checklightuserdata(L, 1);
+		// ::CStickTestDlg * __lstickobj = (::CStickTestDlg *)LuaStick::Lib::checklightuserdata(L, 1);
 		OUTPUT_EXPORTFUNC_STREAM << FORMTEXT(u8R"(
 		// ${SRCMARKER}
 		// Get the class object.
@@ -4898,7 +4898,7 @@ static void HandleStickTag(
 
 /// <summary>
 /// Handles the luatype tag.
-/// e.g. <sticktype name="boolean" ctype="bool" getfunc="Sticklib::check_lvalue" setfunc="Sticklib::push_lvalue" />
+/// e.g. <sticktype name="boolean" ctype="bool" getfunc="LuaStick::Lib::check_lvalue" setfunc="LuaStick::Lib::push_lvalue" />
 /// </summary>
 /// <param name="tag">The tag.</param>
 static void RegisterSticktypeTag(const UtilXml::Tag & tag)
@@ -4926,7 +4926,7 @@ static void RegisterSticktypeTag(const UtilXml::Tag & tag)
 
 /// <summary>
 /// Handles the luaconv tag.
-/// e.g. <stickconv type1="std::string" type2="std::wstring" type1to2="Sticklib::astring_to_wstring" type2to1="Sticklib::wstring_to_astring" />
+/// e.g. <stickconv type1="std::string" type2="std::wstring" type1to2="LuaStick::Lib::astring_to_wstring" type2to1="LuaStick::Lib::wstring_to_astring" />
 /// </summary>
 /// <param name="tag">The tag.</param>
 /// <param name="isImporting">true:Called by importing source code/false:Called from another function</param>
@@ -5331,7 +5331,7 @@ static void OutputClassGetFuncToCpp(const ClassRec & classRec)
 /// Gets ${fullpathClassName} value from Lua stack.
 /// </summary>
 template<>
-void Sticklib::check_lvalue<${fullpathClassName}*>(${fullpathClassName} * & value, lua_State * L, int arg)
+void LuaStick::Lib::check_lvalue<${fullpathClassName}*>(${fullpathClassName} * & value, lua_State * L, int arg)
 {
 	//        stack
 	//     :          :
@@ -5369,7 +5369,7 @@ static void OutputStructGetFuncToCpp(const ClassRec & classRec)
 /// Gets ${fullpathClassName} value from Lua stack.
 /// </summary>
 template<>
-void Sticklib::check_lvalue<${fullpathClassName}>(${fullpathClassName} & value, lua_State * L, int arg)
+void LuaStick::Lib::check_lvalue<${fullpathClassName}>(${fullpathClassName} & value, lua_State * L, int arg)
 {
 	//        stack
 	//     :          :
@@ -5503,7 +5503,7 @@ static void OutputClassPushFuncToCpp(const ClassRec & classRec)
 /// Pushes ${fullpathClassName} value on Lua stack.
 /// </summary>
 template<>
-void Sticklib::push_lvalue<${fullpathClassName}*>(lua_State * L, ${fullpathClassName} * const & value, bool own)
+void LuaStick::Lib::push_lvalue<${fullpathClassName}*>(lua_State * L, ${fullpathClassName} * const & value, bool own)
 {
 	//                   Premise.
 	//       stack
@@ -5581,7 +5581,7 @@ static void OutputStructPushFuncToCpp(const ClassRec & classRec)
 /// Pushes ${fullpathClassName} value on Lua stack.
 /// </summary>
 template<>
-void Sticklib::push_lvalue<${fullpathClassName}>(lua_State * L, ${fullpathClassName} const & value, bool own)
+void LuaStick::Lib::push_lvalue<${fullpathClassName}>(lua_State * L, ${fullpathClassName} const & value, bool own)
 {
 	//        stack
 	//     :          :
@@ -5642,7 +5642,7 @@ static int ${classRec.GetWrapperDestructorName()}(lua_State* L)
 		if (lua_gettop(L) != 1)
 			throw std::invalid_argument("Count of arguments is not correct.");
 		// Get the class object.
-		auto wrapper = (StickInstanceWrapper*)Sticklib::test_classobject(L, 1, "${classRec.GetUniqueClassName()}");
+		auto wrapper = (StickInstanceWrapper*)LuaStick::Lib::test_classobject(L, 1, "${classRec.GetUniqueClassName()}");
 		if (!wrapper)
 			throw std::invalid_argument("The argument is not userdata nor lightuserdata");
 		if (wrapper->hash != XXH64(&wrapper->ptr, sizeof(wrapper->ptr), WRAPPER_SEED))
@@ -5678,7 +5678,7 @@ static void OutputDestructors(const ClassRec & classRec)
 
 /// <summary>
 /// Registers the enum converter.
-/// This is equivalent of reading "<stickdef type="c-lua" luatype="integer" ctype="::B::EnumC" luatoc="Sticklib::int64_to_enumT<::B::EnumC>" ctolua="Sticklib::enumT_to_int64<::B::EnumC>" />".
+/// This is equivalent of reading "<stickdef type="c-lua" luatype="integer" ctype="::B::EnumC" luatoc="LuaStick::Lib::int64_to_enumT<::B::EnumC>" ctolua="LuaStick::Lib::enumT_to_int64<::B::EnumC>" />".
 /// </summary>
 /// <param name="classRec">The enum record.</param>
 static void RegisterEnumConverter(const EnumRec & enumRec)
@@ -5686,8 +5686,8 @@ static void RegisterEnumConverter(const EnumRec & enumRec)
 	// e.g.
 	// enum A { ... } -> enumName="A"
 	const std::string enumName = enumRec.GetFullpathCname();
-	const std::string i64_to_enum = std::string("Sticklib::T_to_U<") + enumName + ", __int64>";
-	const std::string enum_to_i64 = std::string("Sticklib::T_to_U<__int64, ") + enumName + ">";
+	const std::string i64_to_enum = std::string("LuaStick::Lib::T_to_U<") + enumName + ", __int64>";
+	const std::string enum_to_i64 = std::string("LuaStick::Lib::T_to_U<__int64, ") + enumName + ">";
 	UtilXml::Tag tag;
 	tag.name = "stickconv";
 	tag.attributes["type1"] = "__int64";
@@ -5701,10 +5701,10 @@ static void RegisterEnumConverter(const EnumRec & enumRec)
 //// <summary>
 /// Registers a lua-type of a class and struct.
 /// This is equivalent of reading below.
-/// <sticktype name="Super.MyClass" ctype="::Super::MyClass*" getfunc="Sticklib::check_lvalue<::Super::MyClass*>" setfunc="Sticklib::push_lvalue<::Super::MyClass*>" />
-/// <sticktype name="array<Super.MyClass>" ctype="std::vector<::Super::MyClass*>" getfunc="Sticklib::check_array<::Super::MyClass*>" setfunc="Sticklib::push_array<::Super::MyClass*>" />
+/// <sticktype name="Super.MyClass" ctype="::Super::MyClass*" getfunc="LuaStick::Lib::check_lvalue<::Super::MyClass*>" setfunc="LuaStick::Lib::push_lvalue<::Super::MyClass*>" />
+/// <sticktype name="array<Super.MyClass>" ctype="std::vector<::Super::MyClass*>" getfunc="LuaStick::Lib::check_array<::Super::MyClass*>" setfunc="LuaStick::Lib::push_array<::Super::MyClass*>" />
 ///      :
-/// <stickconv type1="std::vector<::Super::MyClass*>" type2="std::unordered_set<::Super::MyClass*>" type1to2="Sticklib::vector_to_uset<::Super::MyClass*,::Super::MyClass*>" type2to1="Sticklib::uset_to_vector<::Super::MyClass*,::Super::MyClass*>" />
+/// <stickconv type1="std::vector<::Super::MyClass*>" type2="std::unordered_set<::Super::MyClass*>" type1to2="LuaStick::Lib::vector_to_uset<::Super::MyClass*,::Super::MyClass*>" type2to1="LuaStick::Lib::uset_to_vector<::Super::MyClass*,::Super::MyClass*>" />
 ///      :
 /// </summary>
 /// <param name="classRec">The class record.</param>
@@ -5720,38 +5720,38 @@ static void RegisterClassType(const ClassRec & classRec)
 
 	typeTag.attributes["name"] = fullLuaName;
 	typeTag.attributes["ctype"] = fullCname;
-	typeTag.attributes["getfunc"] = UtilString::Format("Sticklib::check_lvalue<%s>", fullCname.c_str());
-	typeTag.attributes["setfunc"] = UtilString::Format("Sticklib::push_lvalue<%s>", fullCname.c_str());
+	typeTag.attributes["getfunc"] = UtilString::Format("LuaStick::Lib::check_lvalue<%s>", fullCname.c_str());
+	typeTag.attributes["setfunc"] = UtilString::Format("LuaStick::Lib::push_lvalue<%s>", fullCname.c_str());
 	RegisterSticktypeTag(typeTag);
 
 	typeTag.attributes["name"] = UtilString::Format("array<%s>", fullLuaName.c_str());
 	typeTag.attributes["ctype"] = UtilString::Format("std::vector<%s>", fullCname.c_str());
-	typeTag.attributes["getfunc"] = UtilString::Format("Sticklib::check_array<%s>", fullCname.c_str());
-	typeTag.attributes["setfunc"] = UtilString::Format("Sticklib::push_array<%s>", fullCname.c_str());
+	typeTag.attributes["getfunc"] = UtilString::Format("LuaStick::Lib::check_array<%s>", fullCname.c_str());
+	typeTag.attributes["setfunc"] = UtilString::Format("LuaStick::Lib::push_array<%s>", fullCname.c_str());
 	RegisterSticktypeTag(typeTag);
 
 	typeTag.attributes["name"] = UtilString::Format("hash<number,%s>", fullLuaName.c_str());
 	typeTag.attributes["ctype"] = UtilString::Format("std::unordered_map<double,%s>", fullCname.c_str());
-	typeTag.attributes["getfunc"] = UtilString::Format("Sticklib::check_hash<double,%s>", fullCname.c_str());
-	typeTag.attributes["setfunc"] = UtilString::Format("Sticklib::push_hash<double,%s>", fullCname.c_str());
+	typeTag.attributes["getfunc"] = UtilString::Format("LuaStick::Lib::check_hash<double,%s>", fullCname.c_str());
+	typeTag.attributes["setfunc"] = UtilString::Format("LuaStick::Lib::push_hash<double,%s>", fullCname.c_str());
 	RegisterSticktypeTag(typeTag);
 
 	typeTag.attributes["name"] = UtilString::Format("hash<integer,%s>", fullLuaName.c_str());
 	typeTag.attributes["ctype"] = UtilString::Format("std::unordered_map<__int64,%s>", fullCname.c_str());
-	typeTag.attributes["getfunc"] = UtilString::Format("Sticklib::check_hash<__int64,%s>", fullCname.c_str());
-	typeTag.attributes["setfunc"] = UtilString::Format("Sticklib::push_hash<__int64,%s>", fullCname.c_str());
+	typeTag.attributes["getfunc"] = UtilString::Format("LuaStick::Lib::check_hash<__int64,%s>", fullCname.c_str());
+	typeTag.attributes["setfunc"] = UtilString::Format("LuaStick::Lib::push_hash<__int64,%s>", fullCname.c_str());
 	RegisterSticktypeTag(typeTag);
 
 	typeTag.attributes["name"] = UtilString::Format("hash<boolean,%s>", fullLuaName.c_str());
 	typeTag.attributes["ctype"] = UtilString::Format("std::unordered_map<bool,%s>", fullCname.c_str());
-	typeTag.attributes["getfunc"] = UtilString::Format("Sticklib::check_hash<bool,%s>", fullCname.c_str());
-	typeTag.attributes["setfunc"] = UtilString::Format("Sticklib::push_hash<bool,%s>", fullCname.c_str());
+	typeTag.attributes["getfunc"] = UtilString::Format("LuaStick::Lib::check_hash<bool,%s>", fullCname.c_str());
+	typeTag.attributes["setfunc"] = UtilString::Format("LuaStick::Lib::push_hash<bool,%s>", fullCname.c_str());
 	RegisterSticktypeTag(typeTag);
 
 	typeTag.attributes["name"] = UtilString::Format("hash<string,%s>", fullLuaName.c_str());
 	typeTag.attributes["ctype"] = UtilString::Format("std::unordered_map<std::string,%s>", fullCname.c_str());
-	typeTag.attributes["getfunc"] = UtilString::Format("Sticklib::check_hash<std::string,%s>", fullCname.c_str());
-	typeTag.attributes["setfunc"] = UtilString::Format("Sticklib::push_hash<std::string,%s>", fullCname.c_str());
+	typeTag.attributes["getfunc"] = UtilString::Format("LuaStick::Lib::check_hash<std::string,%s>", fullCname.c_str());
+	typeTag.attributes["setfunc"] = UtilString::Format("LuaStick::Lib::push_hash<std::string,%s>", fullCname.c_str());
 	RegisterSticktypeTag(typeTag);
 
 	UtilXml::Tag convTag;
@@ -5759,14 +5759,14 @@ static void RegisterClassType(const ClassRec & classRec)
 
 	convTag.attributes["type1"] = UtilString::Format("std::vector<%s>", fullCname.c_str());
 	convTag.attributes["type2"] = UtilString::Format("std::unordered_set<%s>", fullCname.c_str());
-	convTag.attributes["type1to2"] = UtilString::Format("Sticklib::vector_to_uset<%s,%s>", fullCname.c_str(), fullCname.c_str());
-	convTag.attributes["type2to1"] = UtilString::Format("Sticklib::uset_to_vector<%s,%s>", fullCname.c_str(), fullCname.c_str());
+	convTag.attributes["type1to2"] = UtilString::Format("LuaStick::Lib::vector_to_uset<%s,%s>", fullCname.c_str(), fullCname.c_str());
+	convTag.attributes["type2to1"] = UtilString::Format("LuaStick::Lib::uset_to_vector<%s,%s>", fullCname.c_str(), fullCname.c_str());
 	RegisterStickconvTag(convTag, false);
 
 	convTag.attributes["type1"] = UtilString::Format("std::vector<%s>", fullCname.c_str());
 	convTag.attributes["type2"] = UtilString::Format("std::set<%s>", fullCname.c_str());
-	convTag.attributes["type1to2"] = UtilString::Format("Sticklib::vector_to_set<%s,%s>", fullCname.c_str(), fullCname.c_str());
-	convTag.attributes["type2to1"] = UtilString::Format("Sticklib::set_to_vector<%s,%s>", fullCname.c_str(), fullCname.c_str());
+	convTag.attributes["type1to2"] = UtilString::Format("LuaStick::Lib::vector_to_set<%s,%s>", fullCname.c_str(), fullCname.c_str());
+	convTag.attributes["type2to1"] = UtilString::Format("LuaStick::Lib::set_to_vector<%s,%s>", fullCname.c_str(), fullCname.c_str());
 	RegisterStickconvTag(convTag, false);
 }
 
@@ -5775,7 +5775,7 @@ static void RegisterClassType(const ClassRec & classRec)
 /// e.g.
 /// /// comment1.
 /// ///   comment2.
-/// -> return "comment1.\r\n  comment2.\r\n"
+/// -> return "comment1.\n  comment2.\n"
 /// </summary>
 /// <param name="readBufferedFile">The read buffered file.</param>
 /// <returns>text</returns>
@@ -5798,7 +5798,7 @@ static std::string Join3SlashComment(ReadBufferedFile & readBufferedFile)
 			// Skip first one space.
 			if (*text == ' ') text++;
 			commentText += text;
-			commentText += "\r\n";
+			commentText += "\n";
 		}
 		else
 		{
@@ -6938,19 +6938,19 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 
 	// Outputs like the following source code. It describes to register the static class 'B'.
 	//-------------------------------------
-	// Sticklib::push_table(L, "B");
+	// LuaStick::Lib::push_table(L, "B");
 	// static struct luaL_Reg lm__B__Static[] =
 	// {
 	//	{ "MyFunc1", lm__MyFunc1__2 },
 	//	{ "MyFunc2", lm__MyFunc2__2 },
 	//	{ nullptr, nullptr },
 	// };
-	// Sticklib::set_functions(L, lm__B__Static);
+	// LuaStick::Lib::set_functions(L, lm__B__Static);
 	//-------------------------------------
 	OUTPUT_INITFUNC_STREAM << FORMTEXT(u8R"(
 	// ${SRCMARKER}
 	// ${topComment}
-	Sticklib::push_table(L, "${classRec.classLuaname}");
+	LuaStick::Lib::push_table(L, "${classRec.classLuaname}");
 	{
 		static struct luaL_Reg ${uniqueClassName}Static[] =
 		{
@@ -6985,7 +6985,7 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 			// ${SRCMARKER}
 			{ nullptr, nullptr },
 		};
-		Sticklib::set_functions(L, ${uniqueClassName}Static);
+		LuaStick::Lib::set_functions(L, ${uniqueClassName}Static);
 	}
 
 
@@ -6998,10 +6998,10 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 			// Outputs like the following source code.
 			//-------------------------------------
 			// // Register the enumeration in the static class '::X'
-			// Sticklib::push_table(L, "Enum1");
-			// Sticklib::set_lvalue_to_table(L, "A", (lua_Integer)::X::Enum1::A);
-			// Sticklib::set_lvalue_to_table(L, "B", (lua_Integer)::X::Enum1::B);
-			// Sticklib::pop(L);
+			// LuaStick::Lib::push_table(L, "Enum1");
+			// LuaStick::Lib::set_lvalue_to_table(L, "A", (lua_Integer)::X::Enum1::A);
+			// LuaStick::Lib::set_lvalue_to_table(L, "B", (lua_Integer)::X::Enum1::B);
+			// LuaStick::Lib::pop(L);
 
 			OUTPUT_INITFUNC_STREAM << FORMTEXT(u8R"(
 	// Register the enumeration in the static class '${classRec.GetFullpathCname()}'
@@ -7017,7 +7017,7 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 					{
 						OUTPUT_INITFUNC_STREAM << FORMTEXT(u8R"(
 	// ${SRCMARKER}
-	Sticklib::push_table(L, "${enumRec.enumLuaname}");
+	LuaStick::Lib::push_table(L, "${enumRec.enumLuaname}");
 
 )", enumRec.enumLuaname);
 					}
@@ -7025,7 +7025,7 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 					{
 						OUTPUT_INITFUNC_STREAM << FORMTEXT(u8R"(
 	// ${SRCMARKER}
-	Sticklib::set_lvalue_to_table<__int64>(L, "${lname_cname.first}", (__int64)${enumRec.GetFullpathElementCprefix()}${lname_cname.second}, false);
+	LuaStick::Lib::set_lvalue_to_table<__int64>(L, "${lname_cname.first}", (__int64)${enumRec.GetFullpathElementCprefix()}${lname_cname.second}, false);
 
 )", lname_cname.first, lname_cname.second, enumRec.GetFullpathElementCprefix());
 					}
@@ -7033,7 +7033,7 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 					{
 						OUTPUT_INITFUNC_STREAM << FORMTEXT(u8R"(
 	// ${SRCMARKER}
-	Sticklib::pop(L);
+	LuaStick::Lib::pop(L);
 
 
 )");
@@ -7053,12 +7053,12 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 		//-------------------------------------
 		// // Register the constants in the static class '::X::A'
 		// {
-		// 	Sticklib::l_string __lstickvar_r1;
-		// 	Sticklib::atext_to_lstring(__lstickvar_r1, ::X::A::ABC);
-		// 	Sticklib::setstring(L, "ABC", __lstickvar_r1);
-		// 	Sticklib::l_integer __lstickvar_r2;
-		// 	Sticklib::intT_to_linteger<int>(__lstickvar_r2, ::X::A::EFG);
-		// 	Sticklib::set_lvalue_to_table(L, "EFG", __lstickvar_r2);
+		// 	LuaStick::Lib::l_string __lstickvar_r1;
+		// 	LuaStick::Lib::atext_to_lstring(__lstickvar_r1, ::X::A::ABC);
+		// 	LuaStick::Lib::setstring(L, "ABC", __lstickvar_r1);
+		// 	LuaStick::Lib::l_integer __lstickvar_r2;
+		// 	LuaStick::Lib::intT_to_linteger<int>(__lstickvar_r2, ::X::A::EFG);
+		// 	LuaStick::Lib::set_lvalue_to_table(L, "EFG", __lstickvar_r2);
 		// }
 
 		int luaArgNumber = 1;
@@ -7126,7 +7126,7 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 				auto fullpathCtypeAst = UtilString::Replace(conversionPath.back(), "&", "");
 				OUTPUT_INITFUNC_STREAM << FORMTEXT(u8R"(
 		// ${SRCMARKER}
-		Sticklib::set_lvalue_to_table<${fullpathCtypeAst}>(L, "${constantRec.constantLuaname}", ${tmpVarName}, false);
+		LuaStick::Lib::set_lvalue_to_table<${fullpathCtypeAst}>(L, "${constantRec.constantLuaname}", ${tmpVarName}, false);
 
 )", fullpathCtypeAst, constantRec.constantLuaname, tmpVarName);
 			}
@@ -7200,12 +7200,12 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 
 		// Outputs like the following.
 		// --- generated ------------------------------------------
-		// Sticklib::register_class(L, "A", "__A__", __A__, "__B__");
+		// LuaStick::Lib::register_class(L, "A", "__A__", __A__, "__B__");
 		if (classRec.superClassId == -1)
 		{
 			OUTPUT_INITFUNC_STREAM << FORMTEXT(u8R"(
 	// ${SRCMARKER}
-	Sticklib::register_class(L, "${uniqueClassName}", ${uniqueClassName}Method, nullptr);
+	LuaStick::Lib::register_class(L, "${uniqueClassName}", ${uniqueClassName}Method, nullptr);
 
 
 )", uniqueClassName);
@@ -7214,7 +7214,7 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 		{
 			OUTPUT_INITFUNC_STREAM << FORMTEXT(u8R"(
 	// ${SRCMARKER}
-	Sticklib::register_class(L, "${uniqueClassName}", ${uniqueClassName}Method, "${ClassRec::Get(classRec.superClassId).GetUniqueClassName()}");
+	LuaStick::Lib::register_class(L, "${uniqueClassName}", ${uniqueClassName}Method, "${ClassRec::Get(classRec.superClassId).GetUniqueClassName()}");
 
 
 )", uniqueClassName, ClassRec::Get(classRec.superClassId).GetUniqueClassName());
@@ -7229,7 +7229,7 @@ static void OutputStickInitCpp(const ClassRec & classRec, int outputApiId)
 	}
 	OUTPUT_INITFUNC_STREAM << FORMTEXT(u8R"(
 	// ${SRCMARKER}
-	Sticklib::pop(L);
+	LuaStick::Lib::pop(L);
 
 
 )");
@@ -8029,7 +8029,7 @@ extern void ${funcName}(lua_State* L);
 
 )", funcName);
 		}
-		OUTPUT_H_FILE_STREAM << "\r\n";
+		OUTPUT_H_FILE_STREAM << "\n";
 
 		for (const auto & sourceFile : headerFiles)
 		{
@@ -8131,7 +8131,7 @@ static int lm__STICK__ObjectToUserdata__1(lua_State* L)
 			throw std::invalid_argument("The argument is not userdata nor lightuserdata");
 		if (wrapper->hash != XXH64(&wrapper->ptr, sizeof(wrapper->ptr), WRAPPER_SEED))
 			throw std::invalid_argument("Invalid class object");
-		Sticklib::push_lvalue<void *>(L, wrapper->ptr, false);
+		LuaStick::Lib::push_lvalue<void *>(L, wrapper->ptr, false);
 	}
 	catch (std::exception & e)
 	{
@@ -8161,7 +8161,7 @@ static int lm__STICK__IsNullObject__1(lua_State* L)
 		if (wrapper->hash != XXH64(&wrapper->ptr, sizeof(wrapper->ptr), WRAPPER_SEED))
 			throw std::invalid_argument("Invalid class object");
 		bool isNull = (wrapper->ptr == nullptr);
-		Sticklib::push_lvalue<bool>(L, isNull, false);
+		LuaStick::Lib::push_lvalue<bool>(L, isNull, false);
 	}
 	catch (std::exception & e)
 	{
@@ -8192,8 +8192,8 @@ void ${funcName}(lua_State* L)
 	WRAPPER_SEED = ((unsigned __int64)engine() << 32) | (unsigned __int64)engine();
 
 	// Register the default namespace '::STICK' and its static member functions.
-	Sticklib::push_table(L, "");
-	Sticklib::push_table(L, "STICK");
+	LuaStick::Lib::push_table(L, "");
+	LuaStick::Lib::push_table(L, "STICK");
 	{
 		static struct luaL_Reg lm__STICK__Static[] =
 		{
@@ -8201,10 +8201,10 @@ void ${funcName}(lua_State* L)
 			{ "IsNullObject", lm__STICK__IsNullObject__1 },
 			{ nullptr, nullptr },
 		};
-		Sticklib::set_functions(L, lm__STICK__Static);
+		LuaStick::Lib::set_functions(L, lm__STICK__Static);
 	}
-	Sticklib::pop(L);
-	Sticklib::pop(L);
+	LuaStick::Lib::pop(L);
+	LuaStick::Lib::pop(L);
 
 )", funcName);
 

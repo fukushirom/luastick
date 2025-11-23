@@ -11,7 +11,7 @@
 //----- 21.05.27 Fukushiro M. 削除終 ()-----
 #include <map>
 
-/// <stickconv type1="::TestClass0*" type2="TC0*" type1to2="Sticklib::T_to_U<TC0*,::TestClass0*>" type2to1="Sticklib::T_to_U<::TestClass0*, TC0*>" />
+/// <stickconv type1="::TestClass0*" type2="TC0*" type1to2="LuaStick::Lib::T_to_U<TC0*,::TestClass0*>" type2to1="LuaStick::Lib::T_to_U<::TestClass0*, TC0*>" />
 /// <stickconv type1="std::map<int,int>" type2="std::unordered_map<__int64,__int64>" type1to2="MapToUmap" type2to1="UmapToMap" />
 
 class TestClass0;

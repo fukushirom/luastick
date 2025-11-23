@@ -822,21 +822,21 @@ private:
 			}
 		}
 
-		Sticklib::AnyValue ToSticklibAnyValue() const
+		LuaStick::AnyValue ToSticklibAnyValue() const
 		{
 			switch (type)
 			{
 			case _TrAnyValue::NIL:
-				return Sticklib::AnyValue();
+				return LuaStick::AnyValue();
 			case _TrAnyValue::BOOLEAN:
-				return Sticklib::AnyValue((num == 0.0) ? false : true);
+				return LuaStick::AnyValue((num == 0.0) ? false : true);
 			case _TrAnyValue::NUMBER:
-				return Sticklib::AnyValue(num);
+				return LuaStick::AnyValue(num);
 			case _TrAnyValue::STRING:
 			case _TrAnyValue::TOKEN:
-				return Sticklib::AnyValue(str.c_str());
+				return LuaStick::AnyValue(str.c_str());
 			default:
-				throw std::runtime_error("System error : AnyValue::ToSticklibAnyValue : Cannot convert to Sticklib::AnyValue.");
+				throw std::runtime_error("System error : AnyValue::ToSticklibAnyValue : Cannot convert to LuaStick::AnyValue.");
 			}
 		}
 
@@ -1085,7 +1085,7 @@ private:
 			//  -2| tableX  |----->| Key     | Value   |
 			//    |---------|      +---------+---------+
 			//    :         :      :         :         :
-			Sticklib::push_lvalue<Sticklib::AnyValue>(m_lua_state, anyName, false);
+			LuaStick::Lib::push_lvalue<LuaStick::AnyValue>(m_lua_state, anyName, false);
 
 			//       stack
 			//    +---------+
@@ -1096,7 +1096,7 @@ private:
 			//  -3| tableX  |----->| Key     | Value   |
 			//    |---------|      +---------+---------+
 			//    :         :      :         :         :
-			Sticklib::push_lvalue<Sticklib::AnyValue>(m_lua_state, anyValue, false);
+			LuaStick::Lib::push_lvalue<LuaStick::AnyValue>(m_lua_state, anyValue, false);
 
 			//       stack
 			//    +---------+      +---------+---------+
@@ -1457,7 +1457,7 @@ private:
 				//  -1| anyValue|
 				//    |---------|
 				//    :         :
-				Sticklib::push_lvalue<Sticklib::AnyValue>(m_lua_state, anyValue, false);
+				LuaStick::Lib::push_lvalue<LuaStick::AnyValue>(m_lua_state, anyValue, false);
 
 				// Assign the value at the top of the stack to the variable and pop the top of the stack.
 				//
@@ -1980,7 +1980,7 @@ private:
 					if (lua_gettop(L) != 1)
 						throw std::invalid_argument("Count of arguments is not correct.");
 					std::string message;
-					Sticklib::check_lvalue<std::string>(message, L, 1);
+					LuaStick::Lib::check_lvalue<std::string>(message, L, 1);
 					ClassObj()->OutputDebug(message.c_str());
 				}
 				catch (std::exception & e)
@@ -2133,7 +2133,7 @@ private:
 //				throw std::invalid_argument("Count of arguments is not correct.");
 //
 //			std::string message;
-//			Sticklib::check_lvalue(message, L, 1);
+//			LuaStick::Lib::check_lvalue(message, L, 1);
 //			LUA_TO_TRACE().at(L)->OutputDebug(message.c_str());
 //		}
 //		catch (std::exception & e)
@@ -2244,7 +2244,7 @@ public:
 			//    |   _G    |----->| Key     |    Value     |
 			//    +---------+      |---------|--------------|
 			//                     :         :              :
-			Sticklib::push_table(stickrun->GetLuaState(), nullptr);
+			LuaStick::Lib::push_table(stickrun->GetLuaState(), nullptr);
 
 			// Create and register the static class 'STICKTRACE'.
 			//       STACK
@@ -2257,7 +2257,7 @@ public:
 			//                     |"STICKTRACE"| table  |--+-->| Key    | Value  |
 			//                     |------------|--------|      |--------|--------|
 			//                     :            :        :      :        :        :
-			Sticklib::push_table(stickrun->GetLuaState(), "STICKTRACE");
+			LuaStick::Lib::push_table(stickrun->GetLuaState(), "STICKTRACE");
 
 //----- 21.05.07 Fukushiro M. 変更前 ()-----
 //			// Register functions into the 'STICKTRACE' table.
@@ -2303,11 +2303,11 @@ public:
 				{ nullptr, nullptr },
 			};
 //----- 21.05.07 Fukushiro M. 変更終 ()-----
-			Sticklib::set_functions(stickrun->GetLuaState(), funcs);
+			LuaStick::Lib::set_functions(stickrun->GetLuaState(), funcs);
 
 			// Pop the "STICKTRACE" table and Global table.
-			Sticklib::pop(stickrun->GetLuaState());
-			Sticklib::pop(stickrun->GetLuaState());
+			LuaStick::Lib::pop(stickrun->GetLuaState());
+			LuaStick::Lib::pop(stickrun->GetLuaState());
 		}
 	}
 
@@ -2323,7 +2323,7 @@ public:
 			//                     |"STICKTRACE"| table  |----->| Key    | Value  |
 			//                     |------------|--------|      |--------|--------|
 			//                     :            :        :      :        :        :
-			Sticklib::push_table(m_stickrun->GetLuaState(), nullptr);
+			LuaStick::Lib::push_table(m_stickrun->GetLuaState(), nullptr);
 
 			//       STACK
 			//    |         |
@@ -2331,10 +2331,10 @@ public:
 			//  -1|   _G    |----->| Key        | Value  |
 			//    +---------+      |------------|--------|
 			//                     :            :        :
-			Sticklib::remove_table_item(m_stickrun->GetLuaState(), "STICKTRACE");
+			LuaStick::Lib::remove_table_item(m_stickrun->GetLuaState(), "STICKTRACE");
 
 			// Pop the Global table.
-			Sticklib::pop(m_stickrun->GetLuaState());
+			LuaStick::Lib::pop(m_stickrun->GetLuaState());
 
 			m_stickrun->SetHook(nullptr, nullptr);
 			m_stickrun = nullptr;
